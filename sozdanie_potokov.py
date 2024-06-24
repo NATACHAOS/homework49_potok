@@ -2,22 +2,25 @@
 from threading import Thread
 from time import sleep
 
-numbers = range(1, 10)
-letters = ('a', 'b', 'c', 'd', 'e', 'f', 'g', 'j')
+numbers = range(1, 11)
+letters = ('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j')
 
 
-def stream(*args):
+def stream_1(*args):
     for number in numbers:
         print(number, flush=True)
         sleep(1)
+
+
+def stream_2(*args):
     for letter in letters:
         print(letter, flush=True)
         sleep(1)
 
 
-thread = Thread(target=stream, args=numbers)
+thread = Thread(target=stream_1, args=numbers)
 thread.start()
 
-stream(letters)
+stream_2(letters)
 
 thread.join()
